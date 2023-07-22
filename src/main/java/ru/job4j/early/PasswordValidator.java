@@ -31,7 +31,9 @@ public class PasswordValidator {
         boolean hasDigit = false;
         boolean hasSpecial = false;
         for (char symbol : password.toCharArray()) {
-            if (Character.isUpperCase(symbol)) {
+            if (hasDigit && hasSpecial && hasUpCase && hasLowCase) {
+                break;
+            } else if (Character.isUpperCase(symbol)) {
                 hasUpCase = true;
             } else if (Character.isLowerCase(symbol)) {
                 hasLowCase = true;
