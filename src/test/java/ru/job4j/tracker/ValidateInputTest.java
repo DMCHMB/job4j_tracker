@@ -32,15 +32,17 @@ public class ValidateInputTest {
     public void whenMultipleValidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{"1", "2", "3", "2", "1"}
+                new String[]{"1", "2", "3", "2"}
         );
         ValidateInput input = new ValidateInput(out, in);
-        int[] expected = {1, 2, 3, 2, 1};
-        int[] result = new int[5];
-        for (int i = 0; i < expected.length; i++) {
-            result[i] = input.askInt("Enter menu:");
-        }
-        assertThat(result).containsExactly(expected);
+        int selectedFirst = input.askInt("Enter menu:");
+        int selectedSecond = input.askInt("Enter menu:");
+        int selectedThird = input.askInt("Enter menu:");
+        int selectedFirth = input.askInt("Enter menu:");
+        assertThat(selectedFirst).isEqualTo(1);
+        assertThat(selectedSecond).isEqualTo(2);
+        assertThat(selectedThird).isEqualTo(3);
+        assertThat(selectedFirth).isEqualTo(2);
     }
 
     @Test
