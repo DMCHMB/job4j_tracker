@@ -55,4 +55,14 @@ class AppleStoreTest {
         String customer = appleStore.getFirstUpsetCustomer();
         assertThat(customer).isNull();
     }
+
+    @Test
+    void whenGetLastIsNull() {
+        Queue<Customer> customers = new LinkedList<>();
+        customers.add(new Customer("Petr", 1000));
+        int count = 2;
+        AppleStore appleStore = new AppleStore(customers, count);
+        String customer = appleStore.getLastHappyCustomer();
+        assertThat(customer).isNull();
+    }
 }
